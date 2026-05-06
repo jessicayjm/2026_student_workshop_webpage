@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schedule</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="schedule_style.css">
+</head>
+<body>
+  <div class="page">
+    <div class="page-header">
+      <span class="page-date" id="dateLabel"></span>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    const items = [
+      { 
+        time: '8:40',
+        label: 'Breakfast',
+        desc: '', 
+        tag: 'break', 
+        tagLabel: 'Break',
+        note: '',
+      },
+      { 
+        time: '9:10',  
+        label: 'Opening Remarks',          
+        desc: '',       
+        tag: 'remarks',  
+        tagLabel: 'Remarks',
+        note: '',
+      },
+      { 
+        time: '9:20', 
+        label: 'Learning to Think from Multiple Thinkers',              
+        desc: 'Nirmit Joshi',           
+        tag: 'student-talk',   
+        tagLabel: 'Student Talk',
+        note: 'I will discuss the problem of learning with Chain-of-Thought (CoT) supervision from multiple thinkers, all of whom provide correct but possibly systematically different solutions, e.g., step-by-step solutions to math problems written by different thinkers, or step-by-step execution traces of different programs solving the same problem. We consider classes that are computationally easy to learn using CoT supervision from a single thinker, but hard to learn with only end-result supervision, i.e., without CoT. <br><br>We will discuss how, under cryptographic assumptions, CoT supervision from even two or a few different thinkers can make learning hard, when the CoTs are collected passively. On the other hand, with active CoT collection, there is a generic computationally efficient algorithm that uses only a small amount of CoT data per thinker, completely independent of the target accuracy \\( \\epsilon \\), while requiring only a moderate number of thinkers and sufficient passive end-result data.',
+      },
+      { 
+        time: '9:40', 
+        label: 'On Incentivized Exploration beyond Bayesianism and Full-Information',              
+        desc: 'Dimitar Chakarov',         
+        tag: 'student-talk',   
+        tagLabel: 'Student Talk',
+        note: 'We extend Incentive Compatible Exploration beyond the Bayesian full-information setting of Kremer et al. [2014]. We consider agents that may possess external information unknown to the principal. We show such settings require new notions of incentivized exploration, as well as going beyond a Bayesian perspective, and we introduce a definition where agents choose any reasonable (undominated) action. Furthermore, our framework provides for a more robust treatment of ties, and  extends to settings where agents lack a single common prior and instead only know that reward distributions belong to a collection of potential priors.',
+      },
+      { 
+        time: '10:00', 
+        label: 'Approximation Algorithms for Clustering Robust to Changing Metrics',              
+        desc: 'Dimitar Chakarov',         
+        tag: 'student-talk',   
+        tagLabel: 'Student Talk',
+        note: 'We study the problem of clustering robust to multiple changing metrics. We propose a strengthened LP relaxation with nearly-optimal integrality gap. We design a poly-log bi-criteria approximation algorithm via a simple LP rounding. On the hardness side, we show that local search algorithms have locality gap linear in the number of clusters, which is in stark contrast to classical single-metric clustering which has constant locality gap. We also prove hardness of approximation that nearly matches the approximation factor of our algorithm.',
+      },
+      // { 
+      //   time: '10:20', 
+      //   label: 'Positive Distribution Shift',              
+      //   desc: 'Marko Medvedev',          
+      //   tag: 'student-talk',   
+      //   tagLabel: 'Student Talk',
+      //   note: "We study a setting where the goal is to learn a target function f(x) with respect to a target distribution D(x), but training is done on i.i.d. samples from a different training distribution D'(x), labeled by the true target f(x). Such a distribution shift (here in the form of covariate shift) is usually viewed negatively, as hurting or making learning harder, and the traditional distribution shift literature is mostly concerned with limiting or avoiding this negative effect. In contrast, we argue that with a well-chosen D'(x), the shift can be positive and make learning easier -- a perspective called Positive Distribution Shift (PDS). Such a perspective is central to contemporary machine learning, where much of the innovation is in finding good training distributions D'(x), rather than changing the training algorithm. We further argue that the benefit is often computational rather than statistical, and that PDS allows computationally hard problems to become tractable even using standard gradient-based training. We formalize different variants of PDS, show how certain hard classes are easily learnable under PDS, and make connections with membership query learning.",
+      // },
+      // { 
+      //   time: '9:50', 
+      //   label: 'Near-Optimal Constructive Bounds for \\( \\ell_2 \\) Prefix Discrepancy and Steinitz Problems via Affine Spectral Independence',              
+      //   desc: 'Agastya Vibhuti Jha',          
+      //   tag: 'student-talk',   
+      //   tagLabel: 'Student Talk',
+      //   note: "A classical result of Steinitz from 1913 cite{Ste13}, answering an earlier question of Riemann and L\'evy (e.g., cite{Lev05}, states that for any norm \\( \\|\\cdot\\| \\) in \\( \\mathbb{R}^d \\) and any set of vectors \\(v_1, \\cdots, v_n \\in R^d\\) satisfying \\( \\sum_{i=1}^n v_i = 0 \\), there exists an ordering \\( \\pi: [n] \\rightarrow [n] \\) such that every partial sum along this order is bounded by \\( O(d) \\), i.e., \\( \\big\\| \\sum_{i=1}^t v_{\\pi(i)} \\big\\| \\leq O(d) \\) for all \\( t \\in [n] \\). <br>,br> Steinitz's bound is tight up to constants in general, but for the \\( \\ell_2 \\) norm \\( \\|\\cdot\\|_2 \\), it has been conjectured that the best bound is \\( O(\\sqrt{d}) \\). Almost a century later, a breakthrough work of Banaszczyk cite{Ban12} gave a bound of \\( O(\\sqrt{d} + \\sqrt{\\log  n}) \\) for the \\( \\ell_2 \\) Steinitz problem, matching the conjecture under the mild assumption that \\( d \\geq \\Omega(\\log n) \\). Banaszczyk's result is non-constructive, and the previous best algorithmic bound was \\( O(\\sqrt{d \\log n}) \\), due to Bansal and Garg cite{BG17}. <br><br> In this work, we give an efficient algorithm that matches the conjectured \\( O(\\sqrt{d}) \\) bound for the \\( \\ell_2 \\) Steinitz problem under the slightly worse, yet still polylogarithmic, condition of \\( d \\geq \\Omega(\\log^7 n) \\). As in prior work, our result extends to the harder problem of \\( \\ell_2 \\) prefix discrepancy. <br><br> We employ the framework of obtaining the desired ordering via a discrete Brownian motion, guided by a semidefinite program (SDP). To obtain our results, we use the new technique of \"Decoupling via Affine Spectral Independence\", proposed by Bansal and Jiang cite{BJ26} to achieve substantial progress on the Beck-Fiala and Koml\'os conjectures, together with a \"Global Interval Tree\" data structure that simultaneously controls the deviations for all prefixes. ",
+      // },
+      
+      { 
+        time: '10:20', 
+        label: 'Break',              
+        desc: '',           
+        tag: 'break',   
+        tagLabel: 'Break',
+        note: '',
+      },
+      { 
+        time: '11:00', 
+        label: 'Stationery Online Contention Resolution Schemes: Theory and Applications',              
+        desc: 'Rad Niazadeh (University of Chicago Booth School of Business)',           
+        tag: 'research-at-ttic',   
+        tagLabel: 'Research at TTIC',
+        note: 'A common technique in Bayesian online optimization under constraints, such as online resource allocation, is to first compute an “ex-ante plan” that is feasible in expectation and then round it online to obtain a near-optimal or approximately optimal online algorithm. In this talk, I will revisit a powerful and well-studied online rounding approach for these problems, known as online contention resolution schemes (OCRSs), under various feasibility criteria. The goal of an OCRS is to ensure that each allocation prescribed by the ex-ante plan is implemented by the feasible online algorithm with sufficiently large probability. The main question I will ask is whether there is a principled approach to designing such algorithms.<br> I will show how this question can be studied through a “symmetric” restriction of the standard OCRS problem, which we call stationary OCRSs (S-OCRSs). This restriction reveals several structural properties that help in designing new and simple algorithms. I will show a deep (and surprising) connection between S-OCRS and max-entropy convex programs over the relevant feasibility region. I will then present several applications of this max-entropy approach, and its variations, to the design of new OCRS algorithms. These include an improved OCRS for bipartite matching, a simpler and optimal OCRS for \\( k \\)-uniform matroids, and an explicit, simple, and optimal OCRS for weakly Rayleigh matroids, a class that includes linear matroids such as graphic and laminar matroids.',
+      },
+      { 
+        time: '12:15',
+        label: 'Lunch',
+        desc: '', 
+        tag: 'break', 
+        tagLabel: 'Break',
+        note: '',
+      },
+      { 
+        time: '12:50', 
+        label: 'Towards Universal Audio Generation',              
+        desc: 'Bowen Shi (Meta)',         
+        tag: 'invited-talk',   
+        tagLabel: 'Invited Talk',
+        note: 'Despite rapid progress, audio generation remains constrained by systems that model modalities (speech, music, and sound) in isolation and offer limited support for interactive editing. In this talk, I will present a series of audio foundation models that collectively move toward a more unified audio generation paradigm. I will begin with AudioBox, a unified model for text-guided audio generation across sound effects and speech. Built on flow matching, AudioBox enables capabilities such as description-to-speech, voice-prompted description-to-speech, and description-guided sound generation and infilling. Next, I will introduce MovieGen Audio, a multimodal generative model that goes beyond text-only prompting by incorporating visual inputs, enabling the generation of high-fidelity, cinematic soundtracks for long-form audio. Finally, I will present SAM Audio (Segment Anything in Audio), a universal audio separation model that unifies traditional domain-specific separation tasks within a single promptable, multimodal framework. By moving beyond one-shot generation, SAM Audio enables interactive generation and editing. Together, these models expand control and flexibility in modern audio generation. I will conclude by discussing open challenges and future directions for audio foundation models.',
+      },
+      { 
+        time: '13:50', 
+        label: 'MoshiRAG: Asynchronous Knowledge Retrieval for Full-Duplex Speech Language Models',              
+        desc: 'Chung-Ming Chien',          
+        tag: 'student-talk',   
+        tagLabel: 'Student Talk',
+        note: 'Speech-to-speech language models have recently emerged to enhance the naturalness of conversational AI. In particular, full-duplex models are distinguished by their real-time interactivity, including handling of pauses, interruptions, and backchannels. However, improving their factuality remains an open challenge. While scaling the model size could address this gap, it would make real-time inference prohibitively expensive. In this work, we propose MoshiRAG, a modular approach that combines a compact full-duplex interface with selective retrieval to access more powerful knowledge sources. Our asynchronous framework enables the model to identify knowledge-demanding queries and ground its responses in external information. By leveraging the natural temporal gap between response onset and the delivery of core information, the retrieval process can be completed while maintaining a natural conversation flow. With this approach, MoshiRAG achieves factuality comparable to the best publicly released non-duplex speech language models while preserving the interactivity inherent to full-duplex systems. Moreover, our flexible design supports plug-and-play retrieval methods without retraining and demonstrates strong performance on out-of-domain mathematical reasoning tasks.',
+      },
+      { 
+        time: '14:10', 
+        label: 'Teaching an Agent to Sketch One Part at a Time',              
+        desc: 'Xiaodan Du',         
+        tag: 'student-talk',   
+        tagLabel: 'Student Talk',
+        note: 'We develop a method for producing vector sketches one part at a time. To do this, we train a multi-modal language model-based agent using a novel multi-turn process-reward reinforcement learning following supervised fine-tuning. Our approach is enabled by a new dataset we call ControlSketch-Part, containing rich part-level annotations for sketches, obtained using a novel, generic automatic annotation pipeline that segments vector sketches into semantic parts and assigns paths to parts with a structured multi-stage labeling process. Our results indicate that incorporating structured part-level data and providing agent with the visual feedback through the process enables interpretable, controllable, and locally editable text-to-vector sketch generation.',
+      },
+      { 
+        time: '14:30', 
+        label: 'Flow Shared Autonomy with Anomaly Detection',              
+        desc: 'Luzhe Sun',          
+        tag: 'student-talk',   
+        tagLabel: 'Student Talk',
+        note: 'Leveraging prior knowledge from pretrained policies, surrogate agents, or human operators offers an efficient alternative to learning robot skills from scratch. However, such actions are often suboptimal, noisy, or misaligned with task-specific expert behavior. We propose GLOVES, a flow-matching-based shared control framework that corrects non-expert actions by transporting them toward an expert action distribution. Rather than replacing user control with full autonomy, GLOVES performs selective action-level adaptation, improving task success while preserving user intent.',
+      },
+      { 
+        time: '15:00', 
+        label: 'Expanding LLM Prior Coverage Using Iterative Parametric–Nonparametric Co-Evolution',              
+        desc: 'Billion Sun',          
+        tag: 'student-talk',   
+        tagLabel: 'Student Talk',
+        note: 'We address the key bottleneck of RLVF dependency on pretrained prior quality by consciously combining parametric and nonparametric evolution methods.',
+      },
+      { 
+        time: '15:30', 
+        label: 'TGIF',
+        desc: '', 
+        tag: 'break', 
+        tagLabel: 'Break',
+        note: '',
+      },
+      { 
+        time: '16:00', 
+        label: 'The AI research ecosystem: how to distinguish between hype and substance',
+        desc: 'panelists: TBD', 
+        tag: 'panel', 
+        tagLabel: 'Panel',
+        note: '',
+      },
+      { 
+        time: '17:00', 
+        label: 'Awards & Closing\ Remarks',
+        desc: '', 
+        tag: 'remarks', 
+        tagLabel: 'Remarks',
+        note: '',
+      }
+    ];
+
+    const tagColors = { 
+      'student-talk':'tag-student-talk', 
+      'invited-talk':'tag-invited-talk',
+      'research-at-ttic':'tag-research-at-ttic',
+      'break':'tag-break', 
+      'panel':'tag-panel',
+      'remarks':'tag-remarks'
+    };
+
+    const tl = document.getElementById('timeline');
+
+    function timeToMinutes(t) {
+      const [h, m] = t.split(':').map(Number);
+      return h * 60 + (m || 0);
+    }
+
+    items.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 't-item';
+      div.innerHTML = `
+        <span class="t-time">${item.time}</span>
+        <div class="t-dot color"></div>
+        <div class="t-card">
+          <div class="t-main" data-idx="${i}">
+            <span class="t-tag ${tagColors[item.tag]}">${item.tagLabel}</span>
+            <div class="t-text">
+              <div class="t-label">${item.label}</div>
+              <div class="t-desc">${item.desc}</div>
+            </div>
+            ${(item.note) ? `
+              <button class="t-add" data-idx="${i}" aria-label="Show details">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>` : ''}
+          </div>
+          <div class="t-expand" id="exp-${i}">
+            <p class="t-note">${item.note}</p>
+        </div>
+      `;
+      tl.appendChild(div);
+
+    });
+
+    tl.querySelectorAll('.t-add').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const idx = btn.dataset.idx;
+        const exp = document.getElementById('exp-' + idx);
+        const isOpen = exp.classList.toggle('open');
+        btn.classList.toggle('open', isOpen);
+      });
+    });
+
+    tl.querySelectorAll('.t-main').forEach(row => {
+      row.addEventListener('click', () => {
+        const btn = tl.querySelector(`.t-add[data-idx="${row.dataset.idx}"]`);
+        btn.click();
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 TTIC Student Workshop</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Fixed blue header bar (always visible) -->
+  <header class="header">
+    <a class="logo-block" href="#">
+      <div class="logo-icon">
+        <img src="./logo.png" alt="Logo" />
+      </div>
+      <!-- <span class="logo-text"></span> -->
+    </a>
+  </header>
+
+  <!-- Full-viewport hero overlay (fades out as user scrolls) -->
+  <div class="hero-overlay" id="heroOverlay">
+    <div class="hero-center">
+      <h1 class="hero-title">2026 TTIC Student Workshop</h1>
+      <p class="hero-date">Friday, May 8, 2026</p>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+
+  <!-- Spacer: pushes main content below the viewport -->
+  <div class="hero-spacer" aria-hidden="true"></div>
+
+  <!-- Main content -->
+  <main class="main-content">
+    <div class="container">
+
+      <span class="section-label">Date</span> 
+      <p class="section-body">May 8, 2026</p>
+
+      <span class="section-label">Format</span> 
+      <p class="section-body">In person</p>
+
+      <span class="section-label">Location for Talks and Panel</span> 
+      <p class="section-body">TTIC 530</p>
+
+      <span class="section-label">Location for breaks</span> 
+      <p class="section-body">TTIC 4th floor common area</p>
+
+      <span class="section-label">Organizing Committee</span> 
+      <p class="section-body">Emily Chang, Shester Gueuwou, Jessica Yang, Gregory Shakhnarovich, Erica Cocom</p>
+
+      <span class="section-label">Talk/Award Committee</span> 
+      <p class="section-body">Siddharth Prasad, Kaylene Stocking, Zhewei Sun</p>
+      
+      <hr class="divider" />
+
+      <p class="section-body" style="color:black">This year's annual TTIC Student Workshop will include student talks, an invited talk, and a panel discussion.</p>
+
+      <p class="section-body"  style="color:black">Each student talk will be 20 (short talk) or 30 (long talk) minutes, including 5 minutes for questions. We will present a Best Talk Award.</p>
+     
+      <p class="section-body" style="color:black">We are glad to have <a href="https://bw-shi.github.io/" target="_blank" rel="noopener noreferrer">Bowen Shi</a> as our invited alumnus, and he will talk about his work on a series of audio foundation models.</p>
+
+      <!-- <p class="section-body"  style="color:black">This year's panel will feature ...</p> -->
+      
+
+      <hr class="divider" />
+
+      <h2 class="section-heading">Schedule</h2>
+      <iframe 
+        src="schedule.html" 
+        style="width:100%; border:none; border-radius:12px; min-height:900px;"
+        title="schedule">
+      </iframe>
+
+    </div>
+
+
+  </main>
+
+  <script>
+    const overlay = document.getElementById('heroOverlay');
+    const fadeStart = 0;          // px scrolled where fade begins
+    const fadeEnd   = window.innerHeight * 1; // px scrolled where overlay is fully gone
+
+    function updateHero() {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      const progress = Math.min(Math.max((scrollY - fadeStart) / (fadeEnd - fadeStart), 0), 1);
+      const opacity  = 1 - progress;
+      overlay.style.opacity = opacity;
+      // disable pointer events once mostly faded so content underneath is interactive
+      overlay.style.pointerEvents = opacity < 0.05 ? 'none' : 'auto';
+    }
+
+    window.addEventListener('scroll', updateHero, { passive: true });
+    window.addEventListener('resize', () => {
+      // recalculate fadeEnd on resize
+    }, { passive: true });
+
+    updateHero();
+  </script>
+</body>
+</html>
