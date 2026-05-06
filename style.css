@@ -10,6 +10,14 @@
       --text: #1a1a1a;
       --muted: #6b6b6b;
       --accent: #1A56DB;
+
+      --bg: #f4f3ef;
+      --surface: #ffffff;
+      --border: rgba(0,0,0,0.08);
+      --border-hover: rgba(0,0,0,0.18);
+      --hint: #aaa;
+      --radius-md: 8px;
+      --radius-lg: 12px;
     }
 
     /*html { scroll-behavior: auto; }*/
